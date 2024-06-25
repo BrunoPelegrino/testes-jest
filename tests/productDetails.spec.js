@@ -31,13 +31,28 @@ const productDetails = require('../src/productDetails');
 
 describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
   it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    fail('Teste vazio!');
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se productDetails é uma função.
-    // Teste se o retorno da função é um array.
-    // Teste se o array retornado pela função contém dois itens dentro.
-    // Teste se os dois itens dentro do array retornado pela função são objetos.
-    // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
-    // Teste se os dois productIds terminam com 123.
+    const newObj = productDetails('string1', 'string2')
+    expect(newObj).toHaveLength(2)
+  });
+  it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
+    const newObj = productDetails('string1', 'string2')
+    expect(typeof newObj[0]).toBe('object')
+    expect(typeof newObj[1]).toBe('object')
+  });
+  it('Verifica se os objetos contêm a propriedade `name` com os valores corretos', () => {
+    const newObj = productDetails('string1', 'string2');
+    expect(newObj[0]).toHaveProperty('name', 'string1');
+    expect(newObj[1]).toHaveProperty('name', 'string2');
+  });
+  it('Verifica se os objetos contêm a propriedade `details` com os valores corretos', () => {
+    const newObj = productDetails('string1', 'string2');
+    expect(typeof newObj[0].details).toBe('object');
+    expect(typeof newObj[1].details).toBe('object');
+  });
+
+  it('Verifica se os objetos contêm a propriedade `details` com os valores corretos', () => {
+    const newObj = productDetails('string1', 'string2');
+    expect(newObj[0].details).toHaveProperty('productId', 'string1123');
+    expect(newObj[1].details).toHaveProperty('productId', 'string2123');
   });
 });
